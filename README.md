@@ -1,5 +1,6 @@
-### Hi there 👋
-
+## Hi there 👋
+I am learning Git !!
+This is really cool
 <!--
 **IamLucif3r/IamLucif3r** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
