@@ -1,0 +1,70 @@
+body{
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    margin-left:240px ;
+    margin-top: 260px;
+}
+h1{
+    font-family: 'Margarine', cursive;
+    font-size: 40px;
+    margin: 10px;
+    margin-bottom: 5px;
+    
+}
+h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 10;
+}
+
+#avatar{
+
+    margin-top: -100px;
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    border: 5px solid teal;
+}
+
+a{
+    text-decoration: none;
+    color: teal;
+}
+a:hover{
+    color:rgb(0, 132, 255) ;
+}
+#twitter{
+    color: rgb(71, 187, 255);
+}
+#twitter:hover{
+    color: rgb(4, 119, 195);
+}
+#linkedin{
+    color: #0077b5;
+}
+#linkedin:hover{
+    color: #005481;
+}
+#github{
+    color:rgb(83, 83, 83);
+}
+#github:hover{
+    color:rgb(46, 46, 46);
+}
+#mail{
+    color:#fb3a57 ;
+}
+#mail:hover{
+    color:#ca0522 ;
+}
+ul li{
+   display:inline-block;
+   margin-top: -10px;
+  margin-left: -20px;
+  padding:20px;
+}
+#box{
+    border: 1px solid black;
+    padding-left: 50px;
+    margin-right: 250px;
+    margin-top: -80px;
+    padding-top: 40px;
+}
