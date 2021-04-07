@@ -1,0 +1,31 @@
+body{
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    font-family: 'Roboto', sans-serif;
+}
+#menu{
+    background-color: rgb(235, 179, 179);
+}
+ul li{
+    display:inline-block;
+    margin-top: -10px;
+   margin-left: -20px;
+   padding:20px;
+ }
+
+a{
+    text-decoration: none;
+    color: teal;
+}
+a:hover{
+    color:rgb(15, 255, 95) ;
+}
+#content{
+    text-align: center;
+}
+#cheat{
+    height: 800px;
+    width: auto;
+}
+#cheat:hover{
+    transform: scale(1.01);
+}
