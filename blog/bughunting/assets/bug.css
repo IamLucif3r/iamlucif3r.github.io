@@ -3,13 +3,13 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 #menu{
-    background-color: rgb(235, 179, 179);
+ border: 1px solid gray;
 }
 ul li{
     display:inline-block;
-    margin-top: -10px;
-   margin-left: -20px;
-   padding:20px;
+    margin-top: 0px;
+   margin-left: 0px;
+   padding:0px;
  }
 
 a{
@@ -17,7 +17,7 @@ a{
     color: teal;
 }
 a:hover{
-    color:rgb(15, 255, 95) ;
+    color:rgb(241, 33, 137) ;
 }
 #content{
     text-align: center;
