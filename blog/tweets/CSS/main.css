@@ -1,0 +1,45 @@
+body{
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    font-family: 'Roboto', sans-serif;
+}
+#menu{
+ border: 1px solid gray;
+}
+ul li{
+    display:inline-block;
+    margin-top: 0px;
+   margin-left: 0px;
+   padding:0px;
+ }
+
+a{
+    text-decoration: none;
+    color: teal;
+}
+a:hover{
+    color:rgb(241, 33, 137) ;
+}
+#content{
+    text-align: center;
+}
+#cheat{
+    height: 800px;
+    width: auto;
+}
+#cheat:hover{
+    transform: scale(1.01);
+}
+#header{
+    align-items: center;
+    text-align: center;
+}
+#content{
+   
+    margin-left: 350px;
+    margin-right: 350px;
+    padding: 0px;
+    
+    border: 5px solid rgb(129, 146, 123);
+    align-items: center;
+   
+}
