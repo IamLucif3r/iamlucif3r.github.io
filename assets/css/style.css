@@ -353,7 +353,7 @@ section .container {
   font-weight: 500;
   padding: 0;
   line-height: 1px;
-  margin: 0 0 20px 0;
+  margin: 0 0 50px 0;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #aaaaaa;
@@ -1163,4 +1163,13 @@ section .container {
 
 .credits a:hover {
   color: #fff;
+}
+.twitter-timeline{
+  padding: 100px;
+  align-items: center;
+  align-content: center;
+ 
+}
+.twitter-follow-button{
+  padding-left: 5px;
 }
