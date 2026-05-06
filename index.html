@@ -1,250 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>My Portfolio | Anmol</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmol Singh Yadav — Security Researcher</title>
+  <meta name="description" content="Anmol Singh Yadav is a cybersecurity researcher specializing in infrastructure security, AI runtime defense, and cloud-native security engineering.">
+  <meta name="author" content="Anmol Singh Yadav">
+  <meta property="og:title" content="Anmol Singh Yadav — Security Researcher">
+  <meta property="og:description" content="Cybersecurity researcher specializing in infrastructure security, AI runtime defense, and cloud-native security engineering.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anmolsinghyadav.com">
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/6c09873fbb.js" crossorigin="anonymous"></script>
-
-  
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>(function(){var t=localStorage.getItem('asy-theme')||'dark';document.documentElement.setAttribute('data-theme',t)})()</script>
 </head>
-
 <body>
 
-  
-  <header id="header">
-    <div class="container">
-
-      <h1><a href="index.html">Anmol Singh Yadav</a></h1>
-     
-     
-      <h2>A <span>Cyber Security</span> Geek from India</h2>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="anmol-singh-yadav.html">Portfolio</a></li>
-         
-          <li><a class="nav-link" href="#services">My Projects</a></li>
-          <li><a class="nav-link" href="#contact">My Tweets</a></li>
-          
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-
-      <div class="social-links">
-        <a href="https://twitter.com/IamLucif3r_" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="https://github.com/IamLucif3r" class="facebook"><i class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/anmolsinghyadav/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        <a href="mailto:sanmol016@gmail.com" class="linkedin"><i class="far fa-envelope"></i></a>
-        <a href="https://medium.com/@IamLucif3r" class="instagram"><i class="fab fa-medium"></i></i></a>
+  <!-- Nav -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__name" id="nav-name">Anmol Singh Yadav</a>
+      <div class="nav__links">
+        <a href="#about" class="nav__link" id="nav-about">About</a>
+        <a href="#work" class="nav__link" id="nav-work">Projects</a>
+        <a href="#writing" class="nav__link" id="nav-writing">Writing</a>
+        <a href="cv.html" class="nav__link" id="nav-cv">CV</a>
+        <a href="#contact" class="nav__link" id="nav-contact">Contact</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="nav__mobile-toggle" id="mobile-nav-toggle" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
       </div>
-
     </div>
-  </header><!-- End Header -->
+  </nav>
 
-  <!-- ======= About Section ======= -->
-  <section id="about" class="about">
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
+    <button class="mobile-nav__close" id="mobile-nav-close" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="#about" class="mobile-nav__link">About</a>
+    <a href="#work" class="mobile-nav__link">Projects</a>
+    <a href="#writing" class="mobile-nav__link">Writing</a>
+    <a href="cv.html" class="mobile-nav__link">CV</a>
+    <a href="#contact" class="mobile-nav__link">Contact</a>
+  </div>
 
-    <!-- ======= About Me ======= -->
-    <div class="about-me container">
+  <main>
 
-      <div class="section-title">
-        <h2>About</h2>
-        <p>Learn more about me</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/me.jpg" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-          <h3>Cyber Security &amp; Digital Forensics Undergraduate</h3>
-          <p class="fst-italic">
-           Hi! I am Anmol Singh Yadav, a Cyber Security Geek and work as in Independent Security Researcher. I'm passionate about Blockchain Development, Web and Android app Development as well. 
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero__text">
+          <div class="hero__name-wrap hero-si" style="transition-delay:.1s">
+            <span class="hero__name hero__name--en">Anmol Singh Yadav</span>
+            <span class="hero__name hero__name--hi">अनमोल सिंह यादव</span>
+            <span class="hero__name glitch-layer glitch-layer-r" aria-hidden="true"></span>
+            <span class="hero__name glitch-layer glitch-layer-b" aria-hidden="true"></span>
+          </div>
+          <p class="hero__role hero-si" style="transition-delay:.25s">Security Researcher · Infrastructure Defense</p>
+          <p class="hero__desc hero-si" style="transition-delay:.4s">
+            I engineer the systems that find vulnerabilities before attackers do — spanning cloud-native defense, AI runtime isolation, and large-scale threat intelligence.
           </p>
-          <div class="row">
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>2 August 2001</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>anmol-singh-yadav.github.io</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91-8299488921</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Prayagraj, India</span></li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>19</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Undergraduate</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>sanmol016@gmail.com</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-              </ul>
-            </div>
+          <div class="hero__actions hero-si" style="transition-delay:.55s">
+            <a href="https://github.com/IamLucif3r" class="hero__social-link" aria-label="GitHub" target="_blank" rel="noopener" id="social-github">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/anmolsinghyadav/" class="hero__social-link" aria-label="LinkedIn" target="_blank" rel="noopener" id="social-linkedin">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://medium.com/@IamLucif3r" class="hero__social-link" aria-label="Medium" target="_blank" rel="noopener" id="social-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            </a>
+            <a href="mailto:sanmol016@gmail.com" class="hero__social-link" aria-label="Email" id="social-email">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg>
+            </a>
+            <a href="cv.html" class="hero__cv-btn" id="hero-cv">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              View CV
+            </a>
           </div>
-        
         </div>
       </div>
+    </section>
 
-    </div><!-- End About Me -->
-
-    <section id="projects" class="about">
-       <!-- ======= Projects ======= -->
-       <div class="about-me container">
-
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Learn more about me</p>
-        </div>
-  
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/me.jpg" class="img-fluid" alt="">
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__label si">About</div>
+        <div class="about__layout">
+          <div class="about__photo-col si d1">
+            <img src="assets/img/me.png" alt="Anmol Singh Yadav" class="about__photo">
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Cyber Security &amp; Digital Forensics Undergraduate</h3>
-            <p class="fst-italic">
-             Hi! I am Anmol Singh Yadav, a Cyber Security Geek and work as in Independent Security Researcher. I'm passionate about Blockchain Development, Web and Android app Development as well. 
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>2 August 2001</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>anmol-singh-yadav.github.io</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91-8299488921</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Prayagraj, India</span></li>
-                </ul>
+          <div class="about__text-col">
+            <p class="about__text si d2">I think in systems. My work focuses on understanding how infrastructure fails — and building the detection and defense layers that prevent those failures from becoming breaches. I operate across cloud-native security, runtime isolation, and AI system hardening.</p>
+            <p class="about__text si d3">I approach security as an engineering discipline: systematic threat modeling, reproducible exploit research, and defense architectures that scale. My research spans container security, credential exposure analysis, and attack surface mapping through unconventional signals.</p>
+            <div class="about__domains si d4">
+              <span class="about__domain-tag">– AI Runtime Security</span>
+              <span class="about__domain-tag">– Cloud Native Defense</span>
+              <span class="about__domain-tag">– Infrastructure Security</span>
+              <span class="about__domain-tag">– Runtime Isolation</span>
+              <span class="about__domain-tag">– Threat Intelligence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects I've Built -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section__label si">Projects I've Built</div>
+        <div class="projects__grid">
+
+          <article class="project-card si d1">
+            <div class="project-card__inner">
+              <div class="project-card__header">
+                <h2 class="project-card__name">FaviCreep</h2>
+                <span class="project-card__num">01</span>
               </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>19</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Undergraduate</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>sanmol016@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
+              <p class="project-card__desc">Attack surface discovery through favicon fingerprinting. Enumerates subdomains, hashes favicons via mmh3, clusters infrastructure sharing identical branding, and pivots to Shodan for internet-wide asset correlation.</p>
+              <div class="project-card__footer">
+                <div class="project-card__tags"><span class="tag">Go</span><span class="tag">Reconnaissance</span><span class="tag">Shodan</span></div>
+                <a href="https://github.com/IamLucif3r/FaviCreep" class="project-card__link" target="_blank" rel="noopener" id="project-favicreep">View <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
               </div>
             </div>
-          
+          </article>
+
+          <article class="project-card si d2">
+            <div class="project-card__inner">
+              <div class="project-card__header">
+                <h2 class="project-card__name">AWS Key Hunter</h2>
+                <span class="project-card__num">02</span>
+              </div>
+              <p class="project-card__desc">Automated credential exposure scanner that monitors GitHub commits in real-time for leaked AWS keys. Detects in plaintext and base64, validates against AWS APIs, and delivers instant Discord alerts.</p>
+              <div class="project-card__footer">
+                <div class="project-card__tags"><span class="tag">Go</span><span class="tag">Cloud Security</span><span class="tag">Docker</span></div>
+                <a href="https://github.com/IamLucif3r/AWS-Key-Hunter" class="project-card__link" target="_blank" rel="noopener" id="project-aws">View <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card si d3">
+            <div class="project-card__inner">
+              <div class="project-card__header">
+                <h2 class="project-card__name">CVE-2007-2447 Exploit</h2>
+                <span class="project-card__num">03</span>
+              </div>
+              <p class="project-card__desc">Standalone exploit for the Samba "username map script" command injection vulnerability. Written in Go as a study in vulnerability research methodology — protocol-level flaws to RCE.</p>
+              <div class="project-card__footer">
+                <div class="project-card__tags"><span class="tag">Go</span><span class="tag">Exploit Dev</span><span class="tag">CVE Research</span></div>
+                <a href="https://github.com/IamLucif3r/CVE-2007-2447-Exploit" class="project-card__link" target="_blank" rel="noopener" id="project-cve">View <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section class="section" id="writing">
+      <div class="container">
+        <div class="section__label si">Writing &amp; Research</div>
+        <div class="writing__grid">
+          <a href="https://blog.anmolsinghyadav.com/dockerfile-security-best-practices-how-to-build-secure-containers-a4fc25c4f2be" class="writing-card si d1" target="_blank" rel="noopener" id="writing-dockerfile">
+            <div class="writing-card__venue">Blog</div>
+            <div class="writing-card__title">Dockerfile Security Best Practices: How to Build Secure Containers</div>
+            <span class="writing-card__arrow">↗</span>
+          </a>
+          <a href="https://infosecwriteups.com/how-i-learned-x86-disassembly-to-analyze-malware-c6183f20a72e" class="writing-card si d2" target="_blank" rel="noopener" id="writing-x86">
+            <div class="writing-card__venue">InfoSec Write-ups</div>
+            <div class="writing-card__title">How I Learned x86 Disassembly to Analyze Malware</div>
+            <span class="writing-card__arrow">↗</span>
+          </a>
+          <a href="https://blog.anmolsinghyadav.com/top-10-firewall-ids-evasion-techniques-cb1e1cc06f24" class="writing-card si d3" target="_blank" rel="noopener" id="writing-firewall">
+            <div class="writing-card__venue">Blog</div>
+            <div class="writing-card__title">Top 10 Firewall / IDS Evasion Techniques</div>
+            <span class="writing-card__arrow">↗</span>
+          </a>
+          <a href="https://infosecwriteups.com/hacking-linux-with-zombie-processes-93676012ac3f" class="writing-card si d4" target="_blank" rel="noopener" id="writing-zombie">
+            <div class="writing-card__venue">InfoSec Write-ups</div>
+            <div class="writing-card__title">Rise of the Zombie Process: How the Dead Can Still Haunt Your System</div>
+            <span class="writing-card__arrow">↗</span>
+          </a>
+          <a href="https://infosecwriteups.com/why-your-favicon-might-be-exposing-your-infrastructure-ddc52455bd64" class="writing-card si d1" target="_blank" rel="noopener" id="writing-favicon">
+            <div class="writing-card__venue">InfoSec Write-ups</div>
+            <div class="writing-card__title">Why Your Favicon Might Be Exposing Your Infrastructure</div>
+            <span class="writing-card__arrow">↗</span>
+          </a>
+          <a href="https://blog.anmolsinghyadav.com/how-i-found-100-exposed-aws-keys-in-public-git-repos-b475c9089764" class="writing-card si d2" target="_blank" rel="noopener" id="writing-aws-keys">
+            <div class="writing-card__venue">Blog</div>
+            <div class="writing-card__title">How I Found 100+ Exposed AWS Keys in Public Git Repos</div>
+            <span class="writing-card__arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current Focus -->
+    <section class="section" id="focus">
+      <div class="container">
+        <div class="section__label si">Current Focus</div>
+        <div class="focus__list">
+          <div class="focus__item si d1">
+            <span class="focus__dash">–</span>
+            <p class="focus__text">Researching AI runtime security boundaries — how LLM-powered agents can be isolated from host infrastructure without sacrificing execution fidelity.</p>
+          </div>
+          <div class="focus__item si d2">
+            <span class="focus__dash">–</span>
+            <p class="focus__text">Building distributed threat intelligence pipelines that aggregate, correlate, and surface credential exposure patterns across public code repositories.</p>
+          </div>
+          <div class="focus__item si d3">
+            <span class="focus__dash">–</span>
+            <p class="focus__text">Studying container escape vectors and runtime isolation models in Kubernetes environments — understanding where the boundaries actually break.</p>
           </div>
         </div>
-  
-      </div> </section></section><!-- End Projects -->
+      </div>
+    </section>
 
-  <!-- ======= Services Section ======= -->
-  <section id="services" class="services">
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section__label si">Get in Touch</div>
+        <div class="contact__grid">
+          <a href="https://github.com/IamLucif3r" class="contact-card si d1" target="_blank" rel="noopener" id="contact-github">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            <span class="contact-card__text">GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/anmolsinghyadav/" class="contact-card si d2" target="_blank" rel="noopener" id="contact-linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span class="contact-card__text">LinkedIn</span>
+          </a>
+          <a href="https://medium.com/@IamLucif3r" class="contact-card si d3" target="_blank" rel="noopener" id="contact-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            <span class="contact-card__text">Medium</span>
+          </a>
+          <a href="mailto:sanmol016@gmail.com" class="contact-card si d4" id="contact-email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg>
+            <span class="contact-card__text">Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-
-      <div class="section-title">
-        <h2>Projects</h2>
-        <p>My Projects</p>
+      <div class="footer__inner">
+        <div class="footer__name">Anmol Singh Yadav</div>
+        <div class="footer__copy">&copy; 2025 — Security Researcher &amp; Infrastructure Engineer</div>
+        <div class="footer__links">
+          <a href="https://github.com/IamLucif3r" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/anmolsinghyadav/" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://medium.com/@IamLucif3r" class="footer__link" target="_blank" rel="noopener">Medium</a>
+        </div>
       </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="icon-box">
-            <div class="icon"><i class="fab fa-ethereum"></i></div>
-            <h4><a href="https://github.com/IamLucif3r/VoteChain">VoteChain</a></h4>
-            <p>A Decentralized E-Voting Web Portal. An Ethereum Blockchain Based Application</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-clipboard-check"></i></div>
-            <h4><a href="https://github.com/IamLucif3r/ToDoz">ToDoz</a></h4>
-            <p>An Angular based Web Application to feed your Daily Tasks </p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="fab fa-python"></i></div>
-            <h4><a href="https://github.com/IamLucif3r/LuciTools">LuciTools</a></h4>
-            <p>Collection of Hacking tools made using Python.</p>
-          </div>
-        </div>
-<!-- 
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-world"></i></div>
-            <h4><a href="">Nemo Enim</a></h4>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-slideshow"></i></div>
-            <h4><a href="">Dele cardo</a></h4>
-            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-arch"></i></div>
-            <h4><a href="">Divera don</a></h4>
-            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-          </div>
-        </div>
--->
-      </div>
-
     </div>
-  </section><!-- End Services Section -->
-
-
-  <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>MY Tweets</h2>
-        <p>FOLLOW ME <a href="https://twitter.com/IamLucif3r_?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @IamLucif3r_</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-      </div>
-
-      <div class="container center">    
-
-     
-      <a class="twitter-timeline" data-width="700" data-theme="dark" href="https://twitter.com/IamLucif3r_?ref_src=twsrc%5Etfw">Tweets by IamLucif3r_</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-     
-
-    </div>
-  </section><!-- End Contact Section -->
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
+  </footer>
 
   <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
