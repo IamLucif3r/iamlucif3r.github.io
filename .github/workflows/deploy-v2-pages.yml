@@ -1,9 +1,9 @@
-name: Deploy v2.0 to GitHub Pages
+name: Deploy main to GitHub Pages
 
 on:
   push:
     branches:
-      - v2.0
+      - main
   workflow_dispatch:
 
 permissions:
