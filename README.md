@@ -1,70 +1,43 @@
-# Research Headquarters v2.0
+# anmolsinghyadav.com
 
-This repository now includes a Next.js static-export platform designed as a long-horizon cybersecurity research headquarters.
+Personal branding website for **Anmol Singh Yadav** — Platform Security Engineer.
 
-## Platform Principles
-
-- Built for depth, permanence and exploration.
-- Content is relationship-first: research, technologies, projects and talks are connected through frontmatter metadata.
-- Designed to scale to hundreds of entries over years, not a short-form feed.
+A premium, dark, single-narrative site: a provocative thesis, proof at production
+scale, selected work, external recognition, and one calm call to get in touch.
 
 ## Stack
 
-- Framework: Next.js App Router with static export
-- Content: MDX in `content/`
-- Metadata: YAML frontmatter
-- Search: Pagefind (runs in `postbuild`)
-- Hosting target: GitHub Pages compatible static output in `out/`
+- **Next.js 15** (App Router) with **static export** (`output: 'export'`)
+- **TypeScript**, **Tailwind CSS**
+- **Framer Motion** (used only for the pinned proof + reveals)
+- **Lucide** icons
+- Self-hosted **Fraunces** (serif display) + **Geist** (sans / mono)
+- Hosted on **GitHub Pages** at `anmolsinghyadav.com`
 
-## Navigation Model
+## Develop
 
-- Home
-- Research
-- Technologies
-- Projects
-- Talks
-- About
-- Search
-
-## Content Structure
-
-```
-content/
-	research/*.mdx
-	technologies/*.mdx
-	projects/*.mdx
-	talks/*.mdx
+```bash
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm build      # static export to ./out
+pnpm lint
 ```
 
-Each MDX file should include frontmatter like:
+## Structure
 
-```yaml
-title: "Entry title"
-summary: "One-line summary"
-date: "2026-01-01"
-technologies: ["oauth", "kubernetes"]
-projects: ["signal-map"]
-talks: ["identity-failures-2026"]
-research: ["predicting-identity-boundary-collapse"]
-references:
-	- "RFC or paper"
-evidence:
-	- "Dataset or measurement"
-```
+- `src/app` — routes: `/` (story), `/cv` (résumé), 404, sitemap, robots, OG image
+- `src/components` — `ui` (primitives), `layout` (nav/footer), `motion`, `sections` (chapters)
+- `src/content` — typed content, the single source of truth (from the CV)
+- `src/config` — site metadata, nav, social links, SEO/JSON-LD
+- `public` — `.nojekyll`, `CNAME`, images, favicon, résumé PDF
 
-## Commands
+## Content
 
-- `npm install --cache .npm-cache`
-- `npm run dev`
-- `npm run build`
+All copy lives in `src/content/*.ts` as typed objects. Editing the site means
+editing data, not markup.
 
-`npm run build` will:
+## To replace
 
-1. Generate static pages with Next.js
-2. Export site to `out/`
-3. Index search with Pagefind into `out/pagefind`
-
-## Notes
-
-- Legacy static HTML files remain in the repository for historical continuity.
-- The new platform lives under `src/` with content in `content/`.
+- `public/resume/anmol-singh-yadav.pdf` — placeholder; drop in the real résumé.
+- The pwnspectrum preview in the Work section is a stylised placeholder frame,
+  not a screenshot.
