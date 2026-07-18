@@ -1,3 +1,9 @@
 SKILL.md
 UPDATES.md
 .DS_Store
+node_modules/
+.next/
+out/
+pagefind/
+.npm-cache/
+*.log

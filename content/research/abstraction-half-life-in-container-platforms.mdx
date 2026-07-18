@@ -1,0 +1,30 @@
+---
+title: "Abstraction Half-Life in Container Platforms"
+summary: "How orchestration abstractions decay under operational pressure and what metrics predict their decay rate."
+date: "2026-04-14"
+status: "published"
+technologies: ["kubernetes", "docker", "linux", "ebpf"]
+projects: ["runtime-radar"]
+talks: ["kernel-signals-at-scale"]
+references:
+  - "Kubernetes SIG Node reports"
+  - "CNCF annual survey"
+evidence:
+  - "12 cluster families observed"
+---
+
+## Research Question
+
+How long does a platform abstraction remain trustworthy before operators bypass it?
+
+## Model
+
+We define abstraction half-life as the time until at least half of critical operations route around the original abstraction.
+
+## Instrumentation
+
+eBPF traces expose hidden control flow that metrics and logs usually miss.
+
+## Results
+
+Clusters with aggressive release cadences experienced faster abstraction decay unless policy and runtime telemetry were co-designed.
