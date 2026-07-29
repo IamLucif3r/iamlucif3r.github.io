@@ -13,7 +13,7 @@ export const projects: Project[] = [
     whyItMatters:
       'Most feeds hand you everything and call it intelligence. pwnspectrum combines feed aggregation, ranking, and contextual summarization so practitioners can act on what matters instead of triaging noise.',
     tags: ['Threat Intelligence', 'LLM Summarization', 'RSS Aggregation', 'Ranking'],
-    href: 'http://feed.anmolsinghyadav.com/index.html',
+    href: 'https://feed.anmolsinghyadav.com/index.html',
     hrefLabel: 'View the feed',
     secondaryHref: 'https://github.com/IamLucif3r/pwnspectrum-rss',
     secondaryHrefLabel: 'GitHub',
