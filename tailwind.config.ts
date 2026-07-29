@@ -2,31 +2,31 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         bg: {
-          base: '#0B0D10',
-          raised: '#121519',
-          inset: '#0E1013',
+          base: 'rgb(var(--bg-base) / <alpha-value>)',
+          raised: 'rgb(var(--bg-raised) / <alpha-value>)',
+          inset: 'rgb(var(--bg-inset) / <alpha-value>)',
         },
         ink: {
-          primary: '#ECEDEF',
-          secondary: '#A2A8B0',
-          tertiary: '#6B7178',
+          primary: 'rgb(var(--ink-primary) / <alpha-value>)',
+          secondary: 'rgb(var(--ink-secondary) / <alpha-value>)',
+          tertiary: 'rgb(var(--ink-tertiary) / <alpha-value>)',
         },
         accent: {
-          DEFAULT: '#6E93E6',
-          hover: '#8AABF0',
-          press: '#5A7FD4',
+          DEFAULT: 'rgb(var(--accent) / <alpha-value>)',
+          hover: 'rgb(var(--accent-hover) / <alpha-value>)',
+          press: 'rgb(var(--accent-press) / <alpha-value>)',
         },
         hairline: {
-          DEFAULT: 'rgba(255,255,255,0.08)',
-          strong: 'rgba(255,255,255,0.14)',
+          DEFAULT: 'var(--hairline)',
+          strong: 'var(--hairline-strong)',
         },
       },
       fontFamily: {
-        serif: ['var(--font-fraunces)', 'Georgia', 'serif'],
         sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
       },

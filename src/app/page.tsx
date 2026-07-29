@@ -1,19 +1,23 @@
 import { Hero } from '@/components/sections/hero';
-import { Lens } from '@/components/sections/lens';
 import { Proof } from '@/components/sections/proof';
+import { Capabilities } from '@/components/sections/capabilities';
 import { Work } from '@/components/sections/work';
-import { Signal } from '@/components/sections/signal';
-import { Invitation } from '@/components/sections/invitation';
+import { Writing } from '@/components/sections/writing';
+import { Speaking } from '@/components/sections/speaking';
+import { About } from '@/components/sections/about';
+import { Contact } from '@/components/sections/contact';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Lens />
       <Proof />
+      <Capabilities />
       <Work />
-      <Signal />
-      <Invitation />
+      <Writing />
+      <Speaking />
+      <About />
+      <Contact />
     </>
   );
 }

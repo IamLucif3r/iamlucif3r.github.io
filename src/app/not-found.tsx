@@ -7,7 +7,7 @@ export default function NotFound() {
       <Container>
         <div className="mx-auto flex max-w-measure flex-col items-center text-center">
           <p className="font-mono text-kicker uppercase text-ink-tertiary">404</p>
-          <h1 className="mt-6 font-serif text-h2 text-ink-primary">
+          <h1 className="mt-6 font-sans text-h2 text-ink-primary">
             This page slipped through a seam.
           </h1>
           <p className="mt-4 font-sans text-body-l text-ink-secondary">

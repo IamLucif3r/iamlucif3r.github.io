@@ -4,7 +4,34 @@
 
 @layer base {
   :root {
-    --font-fraunces: 'Fraunces', Georgia, serif;
+    /* Light by default — warm paper tones chosen to sit close to the
+       portrait photography (stone, sand, teal) rather than a sterile white. */
+    --bg-base: 250 249 246;
+    --bg-raised: 255 255 255;
+    --bg-inset: 241 239 234;
+    --ink-primary: 27 29 32;
+    --ink-secondary: 79 85 92;
+    --ink-tertiary: 134 139 146;
+    --accent: 21 103 118;
+    --accent-hover: 27 124 140;
+    --accent-press: 14 76 87;
+    --hairline: rgba(15, 23, 25, 0.1);
+    --hairline-strong: rgba(15, 23, 25, 0.18);
+    color-scheme: light;
+  }
+
+  .dark {
+    --bg-base: 11 13 16;
+    --bg-raised: 18 21 25;
+    --bg-inset: 14 16 19;
+    --ink-primary: 236 237 239;
+    --ink-secondary: 162 168 176;
+    --ink-tertiary: 107 113 120;
+    --accent: 95 179 199;
+    --accent-hover: 130 196 212;
+    --accent-press: 74 152 172;
+    --hairline: rgba(255, 255, 255, 0.08);
+    --hairline-strong: rgba(255, 255, 255, 0.14);
     color-scheme: dark;
   }
 
@@ -17,16 +44,17 @@
   body {
     @apply bg-bg-base text-ink-primary font-sans antialiased;
     text-rendering: optimizeLegibility;
+    transition: background-color 200ms ease, color 200ms ease;
   }
 
   ::selection {
-    background: rgba(110, 147, 230, 0.28);
-    color: #ecedef;
+    background: rgb(var(--accent) / 0.24);
+    color: rgb(var(--ink-primary));
   }
 
   /* Visible, designed keyboard focus — never removed. */
   :focus-visible {
-    outline: 2px solid #6e93e6;
+    outline: 2px solid rgb(var(--accent));
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -48,6 +76,12 @@
   }
 }
 
+/* Hides the native cursor while the custom cursor is active (desktop only). */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
+}
+
 /* Honour reduced-motion globally: neutralise transitions/animations. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -63,3 +97,4 @@
     scroll-behavior: auto !important;
   }
 }
+

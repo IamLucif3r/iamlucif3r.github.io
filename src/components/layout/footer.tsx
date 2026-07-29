@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-hairline py-12">
       <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1">
-          <span className="font-serif text-base text-ink-primary">{profile.name}</span>
+          <span className="font-sans text-base text-ink-primary">{profile.name}</span>
           <span className="font-mono text-caption text-ink-tertiary">
             {profile.location}
           </span>

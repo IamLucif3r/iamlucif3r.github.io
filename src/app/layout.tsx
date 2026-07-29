@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { Fraunces } from 'next/font/google';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
+import Script from 'next/script';
 
 import '@/styles/globals.css';
 import { siteConfig } from '@/config/site';
@@ -9,14 +9,11 @@ import { personJsonLd } from '@/config/seo';
 import { Nav } from '@/components/layout/nav';
 import { Footer } from '@/components/layout/footer';
 import { ScrollProgress } from '@/components/motion/scroll-progress';
+import { Cursor } from '@/components/motion/cursor';
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  axes: ['opsz'],
-});
+const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+
+const GA_MEASUREMENT_ID = 'G-LX5DFJNFWT';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -52,14 +49,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
         <ScrollProgress />
+        <Cursor />
         <Nav />
         <main id="main">{children}</main>
         <Footer />

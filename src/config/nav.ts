@@ -5,7 +5,12 @@ export interface NavItem {
   cta?: boolean;
 }
 
+/** Anchor links into the homepage narrative, in page order. */
 export const navItems: NavItem[] = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Writing', href: '/#writing' },
+  { label: 'Speaking', href: '/#speaking' },
+  { label: 'About', href: '/#about' },
   { label: 'Résumé', href: '/cv' },
-  { label: 'Get in touch', href: 'mailto:sanmol016@gmail.com', cta: true },
+  { label: 'Contact', href: '/#contact', cta: true },
 ];

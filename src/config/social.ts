@@ -5,6 +5,7 @@ export const social = {
   github: 'https://github.com/IamLucif3r',
   linkedin: 'https://linkedin.com/in/anmolsinghyadav',
   medium: 'https://medium.com/@IamLucif3r',
+  pwnspectrum: 'http://feed.anmolsinghyadav.com/index.html',
 } as const;
 
 /** Ordered list used by the footer. */

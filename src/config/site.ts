@@ -9,7 +9,7 @@ export const siteConfig = {
   resumePdf: '/resume/anmol-singh-yadav.pdf',
 } as const;
 
-/** Dark-only launch. Light mode is a future token flip. */
+/** Light by default; dark mode is a user-toggled, persisted preference. */
 export const features = {
-  lightMode: false,
+  lightMode: true,
 } as const;

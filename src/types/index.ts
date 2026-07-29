@@ -13,8 +13,15 @@ export interface Project {
   name: string;
   tagline: string;
   description: string;
+  /** Why this project matters — the framing line, not a feature list. */
+  whyItMatters: string;
+  tags: string[];
   href?: string;
   hrefLabel?: string;
+  /** Secondary link, e.g. a GitHub repo when href points to a live product. */
+  secondaryHref?: string;
+  secondaryHrefLabel?: string;
+  flagship?: boolean;
   image?: {
     src: string;
     alt: string;
@@ -27,6 +34,37 @@ export interface Signal {
   label: string;
   detail: string;
   href?: string;
+}
+
+export interface ProofChip {
+  label: string;
+  detail: string;
+  href?: string;
+}
+
+export interface CapabilityGroup {
+  id: string;
+  title: string;
+  blurb: string;
+  items: string[];
+}
+
+export interface Article {
+  title: string;
+  date: string;
+  excerpt: string;
+  href: string;
+  theme: string;
+  cover?: string;
+  featured: boolean;
+}
+
+export interface Talk {
+  title: string;
+  event: string;
+  summary: string;
+  href?: string;
+  date?: string;
 }
 
 export interface ResumeExperience {

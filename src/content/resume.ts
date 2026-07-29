@@ -17,10 +17,10 @@ export const experience: ResumeExperience[] = [
     location: 'Mumbai, India',
     period: 'Jan 2023 — Present',
     points: [
-      'Designed and led the adoption of a hardened container runtime architecture, eliminating a validated container-escape path across 160 Kubernetes clusters in production and 53 Linux hosts without operational disruption.',
-      'Architected an SBOM-driven vulnerability intelligence system across 1,000+ repositories, reducing 9,200+ findings to fewer than 350 actionable risks through contextual validation and LLM-assisted prioritization.',
+      'Designed and led the adoption of a hardened container runtime architecture, closing a validated container-escape path across production Kubernetes clusters and Linux hosts without operational disruption.',
+      'Architected an SBOM-driven vulnerability intelligence system, using contextual validation and LLM-assisted prioritization to turn high-volume raw findings into a small, actionable set of real risks.',
       'Designed a Kubernetes security assessment framework enabling cluster owners to identify and remediate misconfigurations such as privileged workloads, default root users, and unsafe capabilities.',
-      'Engineered an eBPF-based detection system across 50+ production hosts, providing real-time visibility into kernel-level activity including privilege escalation, OOM events, network traffic, and sensitive file access.',
+      'Engineered an eBPF-based detection system providing real-time visibility into kernel-level activity across production hosts — privilege escalation, OOM events, network traffic, and sensitive file access.',
       'Applied Kata Containers and runcvm for runtime isolation, implementing microVM-based security controls for containerized workloads in production.',
       'Secured LLM-based systems by isolating execution, enforcing tool-access boundaries, and implementing guardrails to mitigate prompt injection and unsafe outputs.',
     ],
