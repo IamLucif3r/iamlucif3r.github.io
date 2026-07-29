@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { AlertCircle, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
 import { Chip } from '@/components/ui/chip';
@@ -78,7 +78,12 @@ export function Work() {
 
         <div className="md:col-span-7">
           <Reveal delay={0.16}>
-            <ProjectPreview label="feed.anmolsinghyadav.com" src={flagship.href} />
+            <ProjectPreview
+              label="feed.anmolsinghyadav.com"
+              src={flagship.href}
+              fallbackHref={flagship.href}
+              fallbackLabel={flagship.hrefLabel}
+            />
           </Reveal>
         </div>
       </div>
@@ -169,8 +174,39 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
-/** A live embed of the actual feed — not a mockup. It's a real, small site, so it fits. */
-function ProjectPreview({ label, src }: { label: string; src?: string }) {
+/**
+ * A live embed of the actual feed — not a mockup. It's a real, small site,
+ * so it fits. Cross-origin iframes can't report load failures reliably (the
+ * browser's own "can't be reached" interstitial still "loads" successfully
+ * from the frame's point of view), so we fall back to a static card if the
+ * frame hasn't signalled a real load within a few seconds.
+ */
+function ProjectPreview({
+  label,
+  src,
+  fallbackHref,
+  fallbackLabel,
+}: {
+  label: string;
+  src?: string;
+  fallbackHref?: string;
+  fallbackLabel?: string;
+}) {
+  const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>(src ? 'loading' : 'error');
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  useEffect(() => {
+    if (!src) {
+      setStatus('error');
+      return;
+    }
+    setStatus('loading');
+    timeoutRef.current = setTimeout(() => {
+      setStatus((current) => (current === 'loaded' ? current : 'error'));
+    }, 6000);
+    return () => clearTimeout(timeoutRef.current);
+  }, [src]);
+
   return (
     <div className="overflow-hidden rounded-md border border-hairline bg-bg-raised">
       <div className="flex items-center gap-2 border-b border-hairline px-4 py-3">
@@ -182,15 +218,43 @@ function ProjectPreview({ label, src }: { label: string; src?: string }) {
         </span>
       </div>
       <div className="relative h-80 bg-bg-inset sm:h-[26rem]">
-        {src && (
+        {src && status !== 'error' && (
           <iframe
             src={src}
             title="pwnspectrum — live threat intelligence feed"
             loading="lazy"
             referrerPolicy="no-referrer"
             sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+            onLoad={() => setStatus('loaded')}
+            onError={() => setStatus('error')}
             className="absolute inset-0 h-full w-full border-0"
           />
+        )}
+
+        {status === 'loading' && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="h-6 w-6 animate-pulse rounded-full bg-hairline-strong" aria-hidden />
+          </div>
+        )}
+
+        {status === 'error' && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
+            <AlertCircle className="h-5 w-5 text-ink-tertiary" aria-hidden />
+            <p className="max-w-[24ch] font-sans text-caption text-ink-tertiary">
+              Live preview isn&apos;t loading right now.
+            </p>
+            {fallbackHref && (
+              <a
+                href={fallbackHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="pointer"
+                className="font-sans text-caption font-medium text-accent transition-colors duration-fast ease-standard hover:text-accent-hover"
+              >
+                {fallbackLabel ?? 'Open the feed directly'} ↗
+              </a>
+            )}
+          </div>
         )}
       </div>
     </div>

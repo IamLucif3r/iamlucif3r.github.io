@@ -38,10 +38,6 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.role}`,
     description: siteConfig.description,
   },
-  icons: {
-    icon: '/favicon/favicon.png',
-    apple: '/favicon/apple-touch-icon.png',
-  },
   robots: { index: true, follow: true },
 };
 
