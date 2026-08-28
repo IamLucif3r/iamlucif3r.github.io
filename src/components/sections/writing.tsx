@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
 import { TextLink } from '@/components/ui/text-link';
+import { ModeText } from '@/components/ui/mode-text';
 import { Reveal } from '@/components/motion/reveal';
 import { Tilt } from '@/components/motion/tilt';
 import { articles } from '@/content/writing';
@@ -19,22 +20,30 @@ export function Writing() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <Reveal>
-            <Kicker>Writing</Kicker>
+            <Kicker>
+              <ModeText platform="Writing" research="Journal" />
+            </Kicker>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-measure font-sans text-h2 text-ink-primary">
-              A few pieces I’d still stand behind.
+              <ModeText
+                platform="A few pieces I’d still stand behind."
+                research="Field notes from problems that needed a slower read."
+              />
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-3 font-mono text-caption text-ink-tertiary">
-              Picked because I don’t wince rereading them.
+              <ModeText
+                platform="Picked because I don’t wince rereading them."
+                research="Less announcement, more margin note."
+              />
             </p>
           </Reveal>
         </div>
         <Reveal delay={0.08}>
           <TextLink href={social.medium} external arrow>
-            All writing on Medium
+            <ModeText platform="All writing on Medium" research="Open the archive" />
           </TextLink>
         </Reveal>
       </div>
@@ -95,4 +104,3 @@ function ArticleCard({ article }: { article: Article }) {
     </Tilt>
   );
 }
-

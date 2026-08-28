@@ -1,5 +1,6 @@
 import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
+import { ModeText } from '@/components/ui/mode-text';
 import { Reveal } from '@/components/motion/reveal';
 import { proofChips, proofNote } from '@/content/proof';
 
@@ -8,7 +9,9 @@ export function Proof() {
     <Section ariaLabel="Proof and trust signals" className="border-t border-hairline">
       <div className="mx-auto max-w-content">
         <Reveal>
-          <Kicker>Receipts, not adjectives</Kicker>
+          <Kicker>
+            <ModeText platform="Receipts, not adjectives" research="Pinned evidence" />
+          </Kicker>
         </Reveal>
 
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,5 +53,4 @@ export function Proof() {
     </Section>
   );
 }
-
 

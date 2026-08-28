@@ -2,6 +2,7 @@ import { Mic } from 'lucide-react';
 import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
 import { TextLink } from '@/components/ui/text-link';
+import { ModeText } from '@/components/ui/mode-text';
 import { Reveal } from '@/components/motion/reveal';
 import { talks } from '@/content/speaking';
 
@@ -9,11 +10,16 @@ export function Speaking() {
   return (
     <Section id="speaking" ariaLabel="Speaking">
       <Reveal>
-        <Kicker>Speaking</Kicker>
+        <Kicker>
+          <ModeText platform="Speaking" research="Notes" />
+        </Kicker>
       </Reveal>
       <Reveal delay={0.05}>
         <h2 className="mt-6 max-w-measure font-sans text-h2 text-ink-primary">
-          One talk so far. I’m told it went fine.
+          <ModeText
+            platform="One talk so far. I’m told it went fine."
+            research="Ideas that escaped the notebook and had to stand in a room."
+          />
         </h2>
       </Reveal>
 
@@ -35,7 +41,7 @@ export function Speaking() {
                 {talk.href && (
                   <div className="mt-4">
                     <TextLink href={talk.href} external arrow className="text-caption">
-                      View talk
+                      <ModeText platform="View talk" research="Open note" />
                     </TextLink>
                   </div>
                 )}
@@ -47,4 +53,3 @@ export function Speaking() {
     </Section>
   );
 }
-

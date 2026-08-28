@@ -5,6 +5,7 @@ import { TextLink } from '@/components/ui/text-link';
 import { Reveal } from '@/components/motion/reveal';
 import { Magnetic } from '@/components/motion/magnetic';
 import { Kicker } from '@/components/ui/kicker';
+import { ModeText } from '@/components/ui/mode-text';
 import { profile } from '@/content/profile';
 import { social } from '@/config/social';
 
@@ -22,18 +23,26 @@ export function Contact() {
     <Section id="contact" ariaLabel="Contact" className="py-section">
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <Reveal>
-          <Kicker className="justify-center">Contact</Kicker>
+          <Kicker className="justify-center">
+            <ModeText platform="Contact" research="Signal" />
+          </Kicker>
         </Reveal>
 
         <Reveal delay={0.05}>
           <h2 className="mt-6 text-balance font-sans text-display-xl text-ink-primary">
-            {profile.contact.headline}
+            <ModeText
+              platform={profile.contact.headline}
+              research="Ping me — I usually respond."
+            />
           </h2>
         </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-6 max-w-measure font-sans text-body-l text-ink-secondary">
-            {profile.contact.body}
+            <ModeText
+              platform={profile.contact.body}
+              research="Open to thoughtful conversations on platform security, runtime boundaries, eBPF, AI agents, or half-formed questions that are ready to become real work."
+            />
           </p>
         </Reveal>
 
@@ -42,11 +51,11 @@ export function Contact() {
             <Magnetic>
               <ButtonLink href={mailto(intents[0].subject)}>
                 <Mail className="h-4 w-4" aria-hidden />
-                {intents[0].label}
+                <ModeText platform={intents[0].label} research="Share a question" />
               </ButtonLink>
             </Magnetic>
             <ButtonLink href={mailto(intents[1].subject)} variant="secondary">
-              {intents[1].label}
+              <ModeText platform={intents[1].label} research="Collaborate quietly" />
             </ButtonLink>
           </div>
         </Reveal>
@@ -75,4 +84,3 @@ export function Contact() {
     </Section>
   );
 }
-

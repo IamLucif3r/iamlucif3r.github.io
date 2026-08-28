@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
 import { Chip } from '@/components/ui/chip';
+import { ModeText } from '@/components/ui/mode-text';
 import { Reveal } from '@/components/motion/reveal';
 import { cn } from '@/lib/cn';
 import { capabilities } from '@/content/capabilities';
@@ -16,11 +17,16 @@ export function Capabilities() {
   return (
     <Section ariaLabel="Capabilities">
       <Reveal>
-        <Kicker>Capabilities</Kicker>
+        <Kicker>
+          <ModeText platform="Capabilities" research="Methods" />
+        </Kicker>
       </Reveal>
       <Reveal delay={0.05}>
         <h2 className="mt-6 max-w-measure font-sans text-h2 text-ink-primary">
-          Six problems. One recurring question: what shouldn’t be reachable?
+          <ModeText
+            platform="Six problems. One recurring question: what shouldn’t be reachable?"
+            research="Six recurring questions, kept on the desk until the boundary becomes visible."
+          />
         </h2>
       </Reveal>
 

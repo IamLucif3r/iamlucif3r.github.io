@@ -4,32 +4,30 @@
 
 @layer base {
   :root {
-    /* Light by default — warm paper tones chosen to sit close to the
-       portrait photography (stone, sand, teal) rather than a sterile white. */
-    --bg-base: 250 249 246;
+    --bg-base: 251 250 247;
     --bg-raised: 255 255 255;
-    --bg-inset: 241 239 234;
+    --bg-inset: 243 241 236;
     --ink-primary: 27 29 32;
     --ink-secondary: 79 85 92;
     --ink-tertiary: 134 139 146;
-    --accent: 21 103 118;
-    --accent-hover: 27 124 140;
-    --accent-press: 14 76 87;
+    --accent: 19 103 115;
+    --accent-hover: 25 125 139;
+    --accent-press: 12 78 88;
     --hairline: rgba(15, 23, 25, 0.1);
     --hairline-strong: rgba(15, 23, 25, 0.18);
     color-scheme: light;
   }
 
   .dark {
-    --bg-base: 11 13 16;
-    --bg-raised: 18 21 25;
-    --bg-inset: 14 16 19;
-    --ink-primary: 236 237 239;
-    --ink-secondary: 162 168 176;
-    --ink-tertiary: 107 113 120;
-    --accent: 95 179 199;
-    --accent-hover: 130 196 212;
-    --accent-press: 74 152 172;
+    --bg-base: 7 8 10;
+    --bg-raised: 14 17 21;
+    --bg-inset: 10 12 15;
+    --ink-primary: 238 239 235;
+    --ink-secondary: 169 176 181;
+    --ink-tertiary: 113 122 130;
+    --accent: 178 155 105;
+    --accent-hover: 205 181 124;
+    --accent-press: 143 123 82;
     --hairline: rgba(255, 255, 255, 0.08);
     --hairline-strong: rgba(255, 255, 255, 0.14);
     color-scheme: dark;
@@ -44,7 +42,8 @@
   body {
     @apply bg-bg-base text-ink-primary font-sans antialiased;
     text-rendering: optimizeLegibility;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color 950ms cubic-bezier(0.2, 0.6, 0.2, 1),
+      color 950ms cubic-bezier(0.2, 0.6, 0.2, 1);
   }
 
   ::selection {
@@ -74,12 +73,315 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .theme-atmosphere {
+    transition:
+      background-color 950ms cubic-bezier(0.2, 0.6, 0.2, 1),
+      border-color 950ms cubic-bezier(0.2, 0.6, 0.2, 1),
+      box-shadow 950ms cubic-bezier(0.2, 0.6, 0.2, 1),
+      color 950ms cubic-bezier(0.2, 0.6, 0.2, 1),
+      filter 950ms cubic-bezier(0.2, 0.6, 0.2, 1),
+      opacity 950ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+  .research-grain {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgb(255 255 255 / 0.04) 0 1px, transparent 1px),
+      radial-gradient(circle at 70% 60%, rgb(255 255 255 / 0.035) 0 1px, transparent 1px);
+    background-size: 11px 11px, 17px 17px;
+    opacity: 0;
+    transition: opacity 950ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+  .dark .research-grain {
+    animation: research-grain-drift 18s steps(3, end) infinite;
+    opacity: 0.22;
+  }
+
+  .shooting-star {
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: shooting-star 48s linear infinite;
+    background: linear-gradient(90deg, transparent, rgb(231 218 185 / 0.78), transparent);
+    height: 1px;
+    opacity: 0;
+    transform: translate3d(-12vw, 0, 0) rotate(-16deg);
+    width: 5rem;
+  }
+
+  .shooting-star--a {
+    top: 12%;
+    animation-duration: 9s;
+    animation-delay: 3s;
+  }
+
+  .shooting-star--b {
+    top: 30%;
+    width: 7rem;
+    animation-duration: 13s;
+    animation-delay: 7s;
+  }
+
+  .shooting-star--c {
+    top: 7%;
+    animation-duration: 17s;
+    animation-delay: 12s;
+  }
+
+  /* Grok-style cosmic field — only lit in research (dark) mode. */
+  .starfield {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 950ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+  .dark .starfield {
+    opacity: 1;
+  }
+
+  .starfield-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 40% at 50% -5%, rgb(178 155 105 / 0.06), transparent 70%),
+      radial-gradient(70% 60% at 50% 105%, rgb(7 8 10 / 0.65), transparent 75%);
+  }
+
+  .starfield-layer {
+    position: absolute;
+    inset: -60%;
+    background-repeat: repeat;
+    will-change: transform, opacity;
+  }
+
+  .starfield-layer--far {
+    background-image:
+      radial-gradient(1px 1px at 25px 40px, rgb(255 255 255 / 0.8), transparent),
+      radial-gradient(1px 1px at 80px 120px, rgb(255 255 255 / 0.6), transparent),
+      radial-gradient(1px 1px at 150px 60px, rgb(255 255 255 / 0.7), transparent),
+      radial-gradient(1px 1px at 210px 20px, rgb(255 255 255 / 0.5), transparent),
+      radial-gradient(1px 1px at 260px 100px, rgb(255 255 255 / 0.7), transparent),
+      radial-gradient(1px 1px at 120px 220px, rgb(255 255 255 / 0.6), transparent),
+      radial-gradient(1px 1px at 40px 260px, rgb(255 255 255 / 0.5), transparent),
+      radial-gradient(1px 1px at 200px 200px, rgb(255 255 255 / 0.7), transparent),
+      radial-gradient(1px 1px at 290px 250px, rgb(255 255 255 / 0.55), transparent),
+      radial-gradient(1px 1px at 170px 150px, rgb(255 255 255 / 0.5), transparent);
+    background-size: 300px 300px;
+    animation:
+      starfield-drift 190s linear infinite,
+      starfield-twinkle 7s ease-in-out infinite;
+  }
+
+  .starfield-layer--near {
+    background-image:
+      radial-gradient(1.5px 1.5px at 60px 80px, rgb(255 255 255 / 0.95), transparent),
+      radial-gradient(2px 2px at 300px 160px, rgb(231 218 185 / 0.9), transparent),
+      radial-gradient(1.5px 1.5px at 420px 320px, rgb(255 255 255 / 0.85), transparent),
+      radial-gradient(1.5px 1.5px at 150px 380px, rgb(255 255 255 / 0.9), transparent),
+      radial-gradient(1.5px 1.5px at 460px 60px, rgb(255 255 255 / 0.8), transparent),
+      radial-gradient(1.5px 1.5px at 220px 240px, rgb(255 255 255 / 0.85), transparent);
+    background-size: 500px 500px;
+    animation:
+      starfield-drift 130s linear infinite reverse,
+      starfield-twinkle 9s ease-in-out infinite;
+  }
+
+  .sketch-path {
+    stroke-dasharray: var(--sketch-length, 420);
+    stroke-dashoffset: var(--sketch-length, 420);
+  }
+
+  .sketch-note {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  .dark .sketch-path {
+    animation: sketch-draw 1.45s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+    animation-delay: var(--sketch-delay, 0ms);
+  }
+
+  .dark .sketch-note {
+    animation: sketch-note 600ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
+    animation-delay: 1.05s;
+  }
 }
 
-/* Hides the native cursor while the custom cursor is active (desktop only). */
-.cursor-none,
-.cursor-none * {
-  cursor: none !important;
+@keyframes research-grain-drift {
+  0%,
+  100% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 3px -2px, -2px 3px;
+  }
+}
+
+@keyframes starfield-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-300px, 160px, 0);
+  }
+}
+
+@keyframes starfield-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shooting-star {
+  0%,
+  72% {
+    opacity: 0;
+    transform: translate3d(-12vw, 0, 0) rotate(-16deg);
+  }
+  73% {
+    opacity: 0.72;
+  }
+  76% {
+    opacity: 0;
+    transform: translate3d(112vw, 16vh, 0) rotate(-16deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(112vw, 16vh, 0) rotate(-16deg);
+  }
+}
+
+@keyframes sketch-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sketch-note {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rendered markdown inside the research articles reader. */
+.reader-prose {
+  color: rgb(var(--ink-secondary));
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.reader-prose > * + * {
+  margin-top: 1.1em;
+}
+
+.reader-prose h1,
+.reader-prose h2,
+.reader-prose h3 {
+  margin-top: 1.8em;
+  color: rgb(var(--ink-primary));
+  font-family: var(--font-sans, inherit);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.reader-prose h1 {
+  font-size: 1.4rem;
+}
+.reader-prose h2 {
+  font-size: 1.2rem;
+}
+.reader-prose h3 {
+  font-size: 1.05rem;
+}
+
+.reader-prose a {
+  color: rgb(var(--accent));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.reader-prose strong {
+  color: rgb(var(--ink-primary));
+  font-weight: 600;
+}
+
+.reader-prose ul,
+.reader-prose ol {
+  padding-left: 1.4em;
+}
+
+.reader-prose ul {
+  list-style: disc;
+}
+.reader-prose ol {
+  list-style: decimal;
+}
+
+.reader-prose li + li {
+  margin-top: 0.4em;
+}
+
+.reader-prose code {
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+  background: rgb(var(--ink-primary) / 0.08);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.86em;
+}
+
+.reader-prose pre {
+  overflow-x: auto;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgb(var(--ink-primary) / 0.1);
+  border-radius: 10px;
+  background: rgb(var(--bg-inset));
+}
+
+.reader-prose pre code {
+  padding: 0;
+  background: transparent;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.reader-prose blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid rgb(var(--accent) / 0.5);
+  color: rgb(var(--ink-tertiary));
+  font-style: italic;
+}
+
+/* Research articles panel — thin, subtle scrollbars for the sidebar + reader columns. */
+.research-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--ink-primary) / 0.16) transparent;
+}
+
+.research-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.research-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.research-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: rgb(var(--ink-primary) / 0.16);
+}
+
+.research-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(var(--ink-primary) / 0.26);
 }
 
 /* Honour reduced-motion globally: neutralise transitions/animations. */
@@ -97,4 +399,3 @@
     scroll-behavior: auto !important;
   }
 }
-

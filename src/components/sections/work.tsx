@@ -7,6 +7,7 @@ import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
 import { Chip } from '@/components/ui/chip';
 import { TextLink } from '@/components/ui/text-link';
+import { ModeText } from '@/components/ui/mode-text';
 import { Reveal } from '@/components/motion/reveal';
 import { Tilt } from '@/components/motion/tilt';
 import { projects } from '@/content/projects';
@@ -19,11 +20,16 @@ export function Work() {
   return (
     <Section id="work" ariaLabel="Selected work">
       <Reveal>
-        <Kicker>Selected work</Kicker>
+        <Kicker>
+          <ModeText platform="Selected work" research="Laboratory" />
+        </Kicker>
       </Reveal>
       <Reveal delay={0.05}>
         <h2 className="mt-6 max-w-measure font-sans text-h2 text-ink-primary">
-          A few things that survived contact with production.
+          <ModeText
+            platform="A few things that survived contact with production."
+            research="A few investigations that stayed interesting after the first answer."
+          />
         </h2>
       </Reveal>
 
@@ -32,7 +38,10 @@ export function Work() {
         <div className="md:col-span-5">
           <Reveal delay={0.1}>
             <p className="font-mono text-caption uppercase tracking-[0.14em] text-accent">
-              The one I still actively maintain
+              <ModeText
+                platform="The one I still actively maintain"
+                research="A feed I keep returning to"
+              />
             </p>
           </Reveal>
           <Reveal delay={0.14}>
@@ -260,4 +269,3 @@ function ProjectPreview({
     </div>
   );
 }
-

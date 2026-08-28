@@ -9,9 +9,34 @@ import { personJsonLd } from '@/config/seo';
 import { Nav } from '@/components/layout/nav';
 import { Footer } from '@/components/layout/footer';
 import { ScrollProgress } from '@/components/motion/scroll-progress';
-import { Cursor } from '@/components/motion/cursor';
+import { CosmicBackground } from '@/components/motion/cosmic-background';
+import { ScrollToTop } from '@/components/ui/scroll-to-top';
 
-const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+const THEME_INIT_SCRIPT = `(function(){
+  try {
+    var root = document.documentElement;
+    var storage = null;
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        storage = window.localStorage;
+        var probe = '__site_mode_probe__';
+        storage.setItem(probe, probe);
+        storage.removeItem(probe);
+      }
+    } catch (e) {
+      storage = null;
+    }
+    var mode = storage ? storage.getItem('site-mode') : null;
+    var theme = storage ? storage.getItem('theme') : null;
+    var research = mode === 'research' || theme === 'dark';
+    root.classList.toggle('dark', research);
+    root.dataset.mode = research ? 'research' : 'platform';
+  } catch (e) {
+    var root = document.documentElement;
+    root.classList.remove('dark');
+    root.dataset.mode = 'platform';
+  }
+})();`;
 
 const GA_MEASUREMENT_ID = 'G-LX5DFJNFWT';
 
@@ -69,10 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
         <ScrollProgress />
-        <Cursor />
+        <CosmicBackground />
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

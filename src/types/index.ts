@@ -91,3 +91,32 @@ export interface SocialLink {
   label: string;
   href: string;
 }
+
+/** Research-mode content — the personal lab notebook, distinct from the platform site. */
+
+export interface ResearchArticle {
+  /** Folder name under content/research, e.g. "cloud-containers". */
+  category: string;
+  /** Display label for the category, e.g. "Cloud & Containers". */
+  categoryLabel: string;
+  /** URL-safe id derived from the filename, used to select an article. */
+  slug: string;
+  title: string;
+  /** ISO-ish date string, e.g. "2026-07-14". */
+  date: string;
+  /** Short teaser shown in the sidebar/list; falls back to the first paragraph. */
+  summary: string;
+  /** Full body rendered to HTML at build time. */
+  bodyHtml: string;
+  href?: string;
+  hrefLabel?: string;
+}
+
+export interface ScratchArtifact {
+  name: string;
+  blurb: string;
+  /** Freeform state, e.g. "rough", "works on my machine". */
+  state: string;
+  href?: string;
+  hrefLabel?: string;
+}

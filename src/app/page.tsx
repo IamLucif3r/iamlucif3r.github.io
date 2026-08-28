@@ -6,17 +6,30 @@ import { Writing } from '@/components/sections/writing';
 import { Speaking } from '@/components/sections/speaking';
 import { About } from '@/components/sections/about';
 import { Contact } from '@/components/sections/contact';
+import { ResearchArticles } from '@/components/sections/research/articles';
+import { ResearchToolshed } from '@/components/sections/research/scratch';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Proof />
-      <Capabilities />
-      <Work />
-      <Writing />
-      <Speaking />
-      <About />
+
+      {/* Platform site — the polished front. */}
+      <div className="dark:hidden">
+        <Proof />
+        <Capabilities />
+        <Work />
+        <Writing />
+        <Speaking />
+        <About />
+      </div>
+
+      {/* Research notebook — a separate space, shown in research mode only. */}
+      <div className="hidden dark:block">
+        <ResearchArticles />
+        <ResearchToolshed />
+      </div>
+
       <Contact />
     </>
   );

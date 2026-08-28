@@ -5,16 +5,19 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/lib/cn';
-import { navItems } from '@/config/nav';
+import { navItems, researchNavItems } from '@/config/nav';
 import { profile } from '@/content/profile';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { useThemeMode } from '@/lib/theme-mode';
 
-const sectionIds = ['work', 'writing', 'speaking', 'about', 'contact'];
+const platformSectionIds = ['work', 'writing', 'speaking', 'about', 'contact'];
+const researchSectionIds = ['hero', 'articles', 'toolshed', 'contact'];
 
 export function Nav() {
   const [condensed, setCondensed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const { isResearch } = useThemeMode();
 
   useEffect(() => {
     const onScroll = () => setCondensed(window.scrollY > window.innerHeight * 0.6);
@@ -24,6 +27,7 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
+    const sectionIds = isResearch ? researchSectionIds : platformSectionIds;
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
@@ -42,12 +46,12 @@ export function Nav() {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [isResearch]);
 
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-colors duration-base ease-standard',
+        'fixed inset-x-0 top-0 z-50 transition-colors duration-slow ease-standard',
         condensed || mobileOpen
           ? 'border-b border-hairline bg-bg-base/80 backdrop-blur-md'
           : 'border-b border-transparent bg-transparent',
@@ -66,28 +70,30 @@ export function Nav() {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => {
-            const isActive = activeSection && item.href === `/#${activeSection}`;
+          {(isResearch ? researchNavItems : navItems).map((item) => {
+            const href = isResearch ? item.researchHref : item.href;
+            const isActive = activeSection && href === `/#${activeSection}`;
+            const label = isResearch ? item.researchLabel : item.label;
             return item.cta ? (
               <a
                 key={item.label}
-                href={item.href}
+                href={href}
                 data-cursor="pointer"
-                className="rounded-full border border-accent/50 px-4 py-1.5 font-sans text-caption text-ink-primary transition-colors duration-fast ease-standard hover:border-accent hover:bg-accent hover:text-bg-base"
+                className="rounded-full border border-accent/50 px-4 py-1.5 font-sans text-caption text-ink-primary transition-colors duration-slow ease-standard hover:border-accent hover:bg-accent hover:text-bg-base"
               >
-                {item.label}
+                {label}
               </a>
             ) : (
               <Link
                 key={item.label}
-                href={item.href}
+                href={href}
                 data-cursor="pointer"
                 className={cn(
-                  'font-sans text-caption transition-colors duration-fast ease-standard hover:text-ink-primary',
+                  'font-sans text-caption transition-colors duration-slow ease-standard hover:text-ink-primary',
                   isActive ? 'text-accent' : 'text-ink-secondary',
                 )}
               >
-                {item.label}
+                {label}
               </Link>
             );
           })}
@@ -119,27 +125,29 @@ export function Nav() {
             className="overflow-hidden border-b border-hairline bg-bg-base md:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-4">
-              {navItems.map((item) =>
-                item.cta ? (
+              {(isResearch ? researchNavItems : navItems).map((item) => {
+                const href = isResearch ? item.researchHref : item.href;
+                const label = isResearch ? item.researchLabel : item.label;
+                return item.cta ? (
                   <a
                     key={item.label}
-                    href={item.href}
+                    href={href}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-md border border-accent/50 px-4 py-3 text-center font-sans text-body text-ink-primary"
                   >
-                    {item.label}
+                    {label}
                   </a>
                 ) : (
                   <Link
                     key={item.label}
-                    href={item.href}
+                    href={href}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-md px-4 py-3 font-sans text-body text-ink-secondary hover:bg-bg-raised hover:text-ink-primary"
                   >
-                    {item.label}
+                    {label}
                   </Link>
-                ),
-              )}
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -147,4 +155,3 @@ export function Nav() {
     </header>
   );
 }
-

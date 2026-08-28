@@ -18,7 +18,7 @@ scale, selected work, external recognition, and one calm call to get in touch.
 
 ```bash
 pnpm install
-pnpm dev        # http://localhost:3000
+pnpm dev        # http://localhost:4173
 pnpm build      # static export to ./out
 pnpm lint
 ```

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Section } from '@/components/ui/section';
 import { Kicker } from '@/components/ui/kicker';
+import { ModeText } from '@/components/ui/mode-text';
 import { Reveal } from '@/components/motion/reveal';
 import { profile } from '@/content/profile';
 
@@ -34,11 +35,16 @@ export function About() {
 
         <div className="lg:col-span-7">
           <Reveal>
-            <Kicker>About</Kicker>
+            <Kicker>
+              <ModeText platform="About" research="Identity" />
+            </Kicker>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-6 max-w-measure font-sans text-h2 text-ink-primary">
-              {profile.about.headline}
+              <ModeText
+                platform={profile.about.headline}
+                research="The same person, after the formal system diagram is closed."
+              />
             </h2>
           </Reveal>
 
@@ -61,4 +67,3 @@ export function About() {
     </Section>
   );
 }
-
