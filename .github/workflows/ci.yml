@@ -1,0 +1,54 @@
+name: CI
+
+# Build-only check for branches and pull requests. Same steps as the build
+# job in deploy.yml, without deploying — main still deploys via deploy.yml.
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # `next build` runs lint and type checks before exporting.
+      - name: Build static site
+        run: pnpm build
+
+      - name: Check export
+        run: |
+          for f in index.html lab/index.html cv/index.html lab/feed.xml sitemap.xml resume/anmol-singh-yadav.pdf; do
+            test -s "out/$f" || { echo "missing out/$f"; exit 1; }
+          done
+          echo "notes: $(ls out/lab/notes | wc -l)  case studies: $(ls out/work | wc -l)"
+
+      - name: Upload build preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-preview
+          path: out
+          retention-days: 7
