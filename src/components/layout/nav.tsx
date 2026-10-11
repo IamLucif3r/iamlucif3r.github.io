@@ -2,34 +2,30 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { Command, Menu, X } from 'lucide-react';
+import { AnimatePresence, m } from 'framer-motion';
 import { cn } from '@/lib/cn';
-import { navItems, researchNavItems } from '@/config/nav';
-import { profile } from '@/content/profile';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
-import { useThemeMode } from '@/lib/theme-mode';
+import { navItems } from '@/config/nav';
+import { siteConfig, sides, type Side } from '@/config/site';
+import { SideSwitch } from '@/components/layout/side-switch';
+import { openCommandPalette } from '@/components/command-palette';
 
-const platformSectionIds = ['work', 'writing', 'speaking', 'about', 'contact'];
-const researchSectionIds = ['hero', 'articles', 'toolshed', 'contact'];
-
-export function Nav() {
+export function Nav({ side }: { side: Side }) {
   const [condensed, setCondensed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const { isResearch } = useThemeMode();
+  const items = navItems[side];
 
   useEffect(() => {
-    const onScroll = () => setCondensed(window.scrollY > window.innerHeight * 0.6);
+    const onScroll = () => setCondensed(window.scrollY > 24);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    const sectionIds = isResearch ? researchSectionIds : platformSectionIds;
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
+    const sections = items
+      .map((item) => item.sectionId && document.getElementById(item.sectionId))
       .filter((el): el is HTMLElement => Boolean(el));
 
     if (sections.length === 0) return;
@@ -46,7 +42,7 @@ export function Nav() {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, [isResearch]);
+  }, [items]);
 
   return (
     <header
@@ -59,56 +55,64 @@ export function Nav() {
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-16 w-full max-w-content items-center justify-between px-6 md:px-8"
+        className="mx-auto flex h-16 w-full max-w-content items-center justify-between gap-4 px-6 md:px-8"
       >
         <Link
-          href="/"
-          data-cursor="pointer"
-          className="font-sans text-lg tracking-tight text-ink-primary transition-colors duration-fast hover:text-accent"
+          href={sides[side].href}
+          className="shrink-0 font-sans text-lg tracking-tight text-ink-primary transition-colors duration-fast hover:text-accent"
         >
-          {profile.name}
+          {side === 'lab' ? (
+            <span className="font-mono text-base">~/IamLucif3r</span>
+          ) : (
+            siteConfig.name
+          )}
         </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
-          {(isResearch ? researchNavItems : navItems).map((item) => {
-            const href = isResearch ? item.researchHref : item.href;
-            const isActive = activeSection && href === `/#${activeSection}`;
-            const label = isResearch ? item.researchLabel : item.label;
+        <div className="hidden items-center gap-6 lg:flex">
+          {items.map((item) => {
+            const isActive = item.sectionId !== undefined && item.sectionId === activeSection;
             return item.cta ? (
               <a
                 key={item.label}
-                href={href}
-                data-cursor="pointer"
+                href={item.href}
                 className="rounded-full border border-accent/50 px-4 py-1.5 font-sans text-caption text-ink-primary transition-colors duration-slow ease-standard hover:border-accent hover:bg-accent hover:text-bg-base"
               >
-                {label}
+                {item.label}
               </a>
             ) : (
               <Link
                 key={item.label}
-                href={href}
-                data-cursor="pointer"
+                href={item.href}
+                aria-current={isActive ? 'location' : undefined}
                 className={cn(
                   'font-sans text-caption transition-colors duration-slow ease-standard hover:text-ink-primary',
                   isActive ? 'text-accent' : 'text-ink-secondary',
                 )}
               >
-                {label}
+                {item.label}
               </Link>
             );
           })}
-          <ThemeToggle />
         </div>
 
-        <div className="flex items-center gap-1 md:hidden">
-          <ThemeToggle />
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={openCommandPalette}
+            aria-label="Search the site"
+            aria-keyshortcuts="Meta+K Control+K"
+            className="hidden h-8 items-center gap-1 rounded-full border border-hairline-strong px-2.5 font-mono text-[0.72rem] text-ink-tertiary transition-colors duration-fast hover:border-accent hover:text-ink-primary sm:flex"
+          >
+            <Command className="h-3 w-3" aria-hidden />K
+          </button>
+          <SideSwitch current={side} />
           <button
             type="button"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            data-cursor="pointer"
+            aria-controls="mobile-menu"
             onClick={() => setMobileOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center text-ink-primary"
+            className="flex h-9 w-9 items-center justify-center text-ink-primary lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -117,39 +121,48 @@ export function Nav() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
+          <m.div
+            id="mobile-menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: [0.2, 0.6, 0.2, 1] }}
-            className="overflow-hidden border-b border-hairline bg-bg-base md:hidden"
+            className="overflow-hidden border-b border-hairline bg-bg-base lg:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-4">
-              {(isResearch ? researchNavItems : navItems).map((item) => {
-                const href = isResearch ? item.researchHref : item.href;
-                const label = isResearch ? item.researchLabel : item.label;
-                return item.cta ? (
+              {items.map((item) =>
+                item.cta ? (
                   <a
                     key={item.label}
-                    href={href}
+                    href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-md border border-accent/50 px-4 py-3 text-center font-sans text-body text-ink-primary"
+                    className="mt-2 rounded-md border border-accent/50 px-4 py-3 text-center font-sans text-body text-ink-primary"
                   >
-                    {label}
+                    {item.label}
                   </a>
                 ) : (
                   <Link
                     key={item.label}
-                    href={href}
+                    href={item.href}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-md px-4 py-3 font-sans text-body text-ink-secondary hover:bg-bg-raised hover:text-ink-primary"
                   >
-                    {label}
+                    {item.label}
                   </Link>
-                );
-              })}
+                ),
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  openCommandPalette();
+                }}
+                className="rounded-md px-4 py-3 text-left font-sans text-body text-ink-secondary hover:bg-bg-raised hover:text-ink-primary"
+              >
+                Search…
+              </button>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

@@ -1,13 +1,14 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
+import { useCalmMotion } from '@/lib/use-calm-motion';
+import { m, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { cn } from '@/lib/cn';
 
 /**
  * A tasteful 3D hover tilt for cards and the portrait. Tracks the cursor
  * position within the element and maps it to a small rotation. Disabled
- * under reduced-motion.
+ * under reduced-motion and on touch devices.
  */
 export function Tilt({
   children,
@@ -18,7 +19,7 @@ export function Tilt({
   className?: string;
   max?: number;
 }) {
-  const reduce = useReducedMotion();
+  const calm = useCalmMotion();
   const ref = useRef<HTMLDivElement>(null);
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
@@ -31,7 +32,7 @@ export function Tilt({
     damping: 22,
   });
 
-  if (reduce) {
+  if (calm) {
     return <div className={className}>{children}</div>;
   }
 
@@ -48,7 +49,7 @@ export function Tilt({
   }
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
@@ -56,6 +57,6 @@ export function Tilt({
       className={cn('will-change-transform', className)}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

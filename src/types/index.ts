@@ -1,45 +1,38 @@
 /** Shared content types — these are the contract for everything in src/content. */
 
-export interface Metric {
-  /** The headline value, e.g. "160" or "9,200 → <350". */
+export interface Link {
+  label: string;
+  href: string;
+}
+
+export type SocialLink = Link;
+
+/* ── Work side ─────────────────────────────────────────────────────────── */
+
+/** A generalised outcome. Never an internal number — scale words only. */
+export interface ImpactStat {
+  /** The headline, e.g. "Fleet-wide". */
   value: string;
-  /** Short qualifier under the value, e.g. "clusters · 53 hosts". */
+  /** Short qualifier under the value, e.g. "container runtime hardening". */
   unit: string;
   /** One line of context. */
   context: string;
 }
 
-export interface Project {
-  name: string;
-  tagline: string;
-  description: string;
-  /** Why this project matters — the framing line, not a feature list. */
-  whyItMatters: string;
-  tags: string[];
-  href?: string;
-  hrefLabel?: string;
-  /** Secondary link, e.g. a GitHub repo when href points to a live product. */
-  secondaryHref?: string;
-  secondaryHrefLabel?: string;
+export interface CaseStudy {
+  slug: string;
+  title: string;
+  /** Short mono label above the title, e.g. "AI platform security". */
+  eyebrow: string;
+  /** One or two sentences for the card. */
+  summary: string;
+  problem: string;
+  approach: string[];
+  outcome: string;
+  /** Threats or concerns the work covered. */
+  themes?: string[];
+  stack: string[];
   flagship?: boolean;
-  image?: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-}
-
-export interface Signal {
-  label: string;
-  detail: string;
-  href?: string;
-}
-
-export interface ProofChip {
-  label: string;
-  detail: string;
-  href?: string;
 }
 
 export interface CapabilityGroup {
@@ -56,7 +49,6 @@ export interface Article {
   href: string;
   theme: string;
   cover?: string;
-  featured: boolean;
 }
 
 export interface Talk {
@@ -87,36 +79,67 @@ export interface SkillGroup {
   items: string;
 }
 
-export interface SocialLink {
+export interface Signal {
   label: string;
+  detail: string;
+  href?: string;
+}
+
+/* ── Lab side ──────────────────────────────────────────────────────────── */
+
+export interface LabProject {
+  slug: string;
+  name: string;
+  tagline: string;
+  description: string;
+  tags: string[];
+  links: Link[];
+  /** Freeform state, e.g. "Maintained", "Shipping daily". */
+  status: string;
+  /** A public number you are happy to show, e.g. { value: '1,000+', label: 'downloads on Hugging Face' }. */
+  stat?: { value: string; label: string };
+  flagship?: boolean;
+  /** Live preview URL (must be https). */
+  embed?: string;
+}
+
+/** Small public repos — real, rough, and useful. */
+export interface ToolshedItem {
+  name: string;
+  blurb: string;
+  language: string;
   href: string;
 }
 
-/** Research-mode content — the personal lab notebook, distinct from the platform site. */
+export interface NowItem {
+  label: string;
+  detail: string;
+}
 
 export interface ResearchArticle {
   /** Folder name under content/research, e.g. "cloud-containers". */
   category: string;
   /** Display label for the category, e.g. "Cloud & Containers". */
   categoryLabel: string;
-  /** URL-safe id derived from the filename, used to select an article. */
+  /** URL-safe id derived from the filename; the note lives at /lab/notes/<slug>/. */
   slug: string;
   title: string;
   /** ISO-ish date string, e.g. "2026-07-14". */
   date: string;
-  /** Short teaser shown in the sidebar/list; falls back to the first paragraph. */
+  /** Short teaser shown in lists; falls back to the first paragraph. */
   summary: string;
   /** Full body rendered to HTML at build time. */
   bodyHtml: string;
+  readingMinutes: number;
   href?: string;
   hrefLabel?: string;
 }
 
-export interface ScratchArtifact {
-  name: string;
-  blurb: string;
-  /** Freeform state, e.g. "rough", "works on my machine". */
-  state: string;
-  href?: string;
-  hrefLabel?: string;
+/* ── Command palette ───────────────────────────────────────────────────── */
+
+export interface CommandItem {
+  label: string;
+  href: string;
+  group: 'Work' | 'Lab' | 'Notes' | 'Elsewhere';
+  hint?: string;
 }

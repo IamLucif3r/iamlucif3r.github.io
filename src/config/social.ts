@@ -3,15 +3,26 @@ import type { SocialLink } from '@/types';
 export const social = {
   email: 'sanmol016@gmail.com',
   github: 'https://github.com/IamLucif3r',
-  linkedin: 'https://linkedin.com/in/anmolsinghyadav',
+  linkedin: 'https://www.linkedin.com/in/anmolsinghyadav',
   medium: 'https://medium.com/@IamLucif3r',
-  pwnspectrum: 'http://feed.anmolsinghyadav.com/index.html',
+  huggingface: 'https://huggingface.co/IamLucif3r',
+  tryhackme: 'https://tryhackme.com/p/IamLucif3r',
+  pwnspectrum: 'https://feed.anmolsinghyadav.com/',
 } as const;
 
-/** Ordered list used by the footer. */
-export const socialLinks: SocialLink[] = [
-  { label: 'GitHub', href: social.github },
+/** Footer links on the work side. */
+export const workSocialLinks: SocialLink[] = [
   { label: 'LinkedIn', href: social.linkedin },
+  { label: 'GitHub', href: social.github },
   { label: 'Medium', href: social.medium },
   { label: 'Email', href: `mailto:${social.email}` },
+];
+
+/** Footer links on the lab side. */
+export const labSocialLinks: SocialLink[] = [
+  { label: 'GitHub', href: social.github },
+  { label: 'Hugging Face', href: social.huggingface },
+  { label: 'Medium', href: social.medium },
+  { label: 'TryHackMe', href: social.tryhackme },
+  { label: 'RSS', href: '/lab/feed.xml' },
 ];

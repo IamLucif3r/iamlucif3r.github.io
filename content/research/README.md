@@ -1,7 +1,8 @@
 # Research articles
 
-Drop a `.md` file into one of the category folders and it appears on the site automatically —
-grouped under that category, sorted newest first, no other wiring required.
+Drop a `.md` file into one of the category folders and it appears in the lab automatically —
+listed under its category, sorted newest first, with its own page at `/lab/notes/<filename>/`
+and an entry in the RSS feed (`/lab/feed.xml`). No other wiring required.
 
 ## Categories (folders)
 
@@ -23,6 +24,7 @@ date: 2026-05-25
 summary: Optional one-line teaser; falls back to the first paragraph if omitted.
 href: https://example.com/optional-external-link
 hrefLabel: Optional label for the external link
+draft: true   # optional — hides the note from the site, feed, and sitemap
 ---
 
 Body in Markdown.

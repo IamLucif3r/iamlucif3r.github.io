@@ -1,12 +1,13 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useCalmMotion } from '@/lib/use-calm-motion';
+import { m } from 'framer-motion';
 import { cn } from '@/lib/cn';
 
 /**
  * Wraps an interactive element and gives it a gentle magnetic pull toward
- * the cursor. Disabled entirely under reduced-motion.
+ * the cursor. Disabled under reduced-motion and on touch devices.
  */
 export function Magnetic({
   children,
@@ -18,10 +19,10 @@ export function Magnetic({
   strength?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
+  const calm = useCalmMotion();
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
-  if (reduce) {
+  if (calm) {
     return <div className={className}>{children}</div>;
   }
 
@@ -39,7 +40,7 @@ export function Magnetic({
   }
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       data-cursor="magnetic"
       onMouseMove={handleMove}
@@ -49,6 +50,6 @@ export function Magnetic({
       className={cn('inline-block will-change-transform', className)}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

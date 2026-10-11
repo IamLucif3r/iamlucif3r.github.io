@@ -9,7 +9,8 @@
     --bg-inset: 243 241 236;
     --ink-primary: 27 29 32;
     --ink-secondary: 79 85 92;
-    --ink-tertiary: 134 139 146;
+    /* ≥ 4.5:1 on every light surface (WCAG AA for small text). */
+    --ink-tertiary: 100 106 114;
     --accent: 19 103 115;
     --accent-hover: 25 125 139;
     --accent-press: 12 78 88;
@@ -24,7 +25,7 @@
     --bg-inset: 10 12 15;
     --ink-primary: 238 239 235;
     --ink-secondary: 169 176 181;
-    --ink-tertiary: 113 122 130;
+    --ink-tertiary: 128 137 145;
     --accent: 178 155 105;
     --accent-hover: 205 181 124;
     --accent-press: 143 123 82;
@@ -60,6 +61,36 @@
 
   :focus:not(:focus-visible) {
     outline: none;
+  }
+
+  /* Anchored sections clear the fixed nav. */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/*
+ * Work ↔ Lab is a real document navigation, so the browser can animate it.
+ * The opt-in `@view-transition` rule is injected by the head script in
+ * src/app/layout.tsx (Next's CSS tooling stalls on that at-rule). The switch
+ * stores the click point; the head script copies it into --vt-x / --vt-y and
+ * sets data-vt="reveal" for a circular wipe. Other browsers just navigate.
+ */
+
+html[data-vt='reveal']::view-transition-old(root) {
+  animation: none;
+}
+
+html[data-vt='reveal']::view-transition-new(root) {
+  animation: side-reveal 720ms cubic-bezier(0.2, 0.6, 0.2, 1) both;
+}
+
+@keyframes side-reveal {
+  from {
+    clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0));
+  }
+  to {
+    clip-path: circle(150vmax at var(--vt-x, 50%) var(--vt-y, 0));
   }
 }
 
@@ -191,25 +222,6 @@
       starfield-twinkle 9s ease-in-out infinite;
   }
 
-  .sketch-path {
-    stroke-dasharray: var(--sketch-length, 420);
-    stroke-dashoffset: var(--sketch-length, 420);
-  }
-
-  .sketch-note {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-
-  .dark .sketch-path {
-    animation: sketch-draw 1.45s cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
-    animation-delay: var(--sketch-delay, 0ms);
-  }
-
-  .dark .sketch-note {
-    animation: sketch-note 600ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
-    animation-delay: 1.05s;
-  }
 }
 
 @keyframes research-grain-drift {
@@ -260,24 +272,12 @@
   }
 }
 
-@keyframes sketch-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
 
-@keyframes sketch-note {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Rendered markdown inside the research articles reader. */
+/* Rendered markdown on lab note pages. */
 .reader-prose {
   color: rgb(var(--ink-secondary));
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.0625rem;
+  line-height: 1.75;
 }
 
 .reader-prose > * + * {
@@ -361,7 +361,7 @@
   font-style: italic;
 }
 
-/* Research articles panel — thin, subtle scrollbars for the sidebar + reader columns. */
+/* Thin, subtle scrollbars for inner scroll areas (command palette list). */
 .research-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgb(var(--ink-primary) / 0.16) transparent;

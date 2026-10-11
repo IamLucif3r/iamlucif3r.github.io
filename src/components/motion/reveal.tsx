@@ -1,11 +1,11 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { cn } from '@/lib/cn';
 
 /**
  * Reveals children with a gentle fade + rise as they enter the viewport.
- * Degrades to an instant, static render under reduced-motion.
+ * Reduced-motion users get the fade without the movement (via MotionConfig).
  */
 export function Reveal({
   children,
@@ -18,13 +18,7 @@ export function Reveal({
   delay?: number;
   as?: 'div' | 'span';
 }) {
-  const reduce = useReducedMotion();
-  const MotionTag = as === 'span' ? motion.span : motion.div;
-
-  if (reduce) {
-    const Tag = as;
-    return <Tag className={className}>{children}</Tag>;
-  }
+  const MotionTag = as === 'span' ? m.span : m.div;
 
   return (
     <MotionTag
